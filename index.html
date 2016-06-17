@@ -22,13 +22,13 @@
       <h1>
 <a id="slowhttptest" class="anchor" href="#slowhttptest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SlowHTTPTest</h1>
 
-<p>Application Layer DoS attacks, such as <strong><a href="http://ha.ckers.org/slowloris/">slowloris</a></strong>, <strong><a href="http://www.darkreading.com/vulnerability-management/167901026/security/attacks-breaches/228000532/index.html">Slow HTTP POST</a></strong>, <strong><a href="https://community.qualys.com/blogs/securitylabs/2012/01/05/slow-read">Slow Read attack</a></strong> (based on TCP persist timer exploit) by draining concurrent connections pool, as well as <strong>[[Apache Range Header attack|ApacheRangeTest]]</strong> by causing very significant memory and CPU usage on the server.</p>
+<p>Application Layer DoS attacks, such as <strong><a href="http://ha.ckers.org/slowloris/">slowloris</a></strong>, <strong><a href="http://www.darkreading.com/vulnerability-management/167901026/security/attacks-breaches/228000532/index.html">Slow HTTP POST</a></strong>, <strong><a href="https://community.qualys.com/blogs/securitylabs/2012/01/05/slow-read">Slow Read attack</a></strong> (based on TCP persist timer exploit) by draining concurrent connections pool, as well as <strong><a href="https://github.com/shekyan/slowhttptest/wiki/ApacheRangeTest">Apache Range Header attack</a></strong> by causing very significant memory and CPU usage on the server.</p>
 
 <p>Slowloris and Slow HTTP POST DoS attacks rely on the fact that the HTTP protocol, by design, requires requests to be completely received by the server before they are processed. If an HTTP request is not complete, or if the transfer rate is very low, the server keeps its resources busy waiting for the rest of the data. If the server keeps too many resources busy, this creates a denial of service. This tool is sending partial HTTP requests, trying to get denial of service from target HTTP server.</p>
 
 <p><a href="https://github.com/shekyan/slowhttptest/wiki/SlowReadTest">Slow Read DoS attack</a> aims the same resources as slowloris and slow POST, but instead of prolonging the request, it sends legitimate HTTP request and reads the response slowly.</p>
 
-<p>[[Installation and usage examples|InstallationAndUsage]]</p>
+<p><a href="https://github.com/shekyan/slowhttptest/wiki/InstallationAndUsage">Installation and usage examples</a></p>
 
 <p><a href="http://blog.shekyan.com/2012/01/how-i-knocked-down-30-servers-from-one-laptop.html">How I knocked down 30 servers using slowhttptest</a></p>
 
@@ -38,7 +38,7 @@
 
 <p><a href="http://blog.shekyan.com/2011/11/how-to-protect-against-slow-http-attacks.html">How to protect against slow HTTP DoS attacks</a></p>
 
-<p>Many thanks to <a href="http://code.google.com/u/tigran_gevorgyan@hotmail.com">Tigran Gevorgyan</a>  and <a href="http://code.google.com/u/107950426759701528367/">Victor Agababov</a> for tons of help and support.
+<p>Many thanks to <a href="http://code.google.com/u/tigran_gevorgyan@hotmail.com">Tigran Gevorgyan</a>  and <a href="https://https://github.com/vagababov">Victor Agababov</a> for tons of help and support.
 The logo is from <a href="http://openclipart.org/detail/168031/">http://openclipart.org/detail/168031/</a>.</p>
 
 <p>Some links to the media coverage, for historical purposes:</p>
@@ -67,7 +67,7 @@ The logo is from <a href="http://openclipart.org/detail/168031/">http://openclip
 <h2>
 <a id="28-december-2011" class="anchor" href="#28-december-2011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>28 December 2011</h2>
 
-<p>Released version 1.3 with [[Slow Read Denial of Service attack|SlowReadTest]] support.</p>
+<p>Released version 1.3 with <a href="https://github.com/shekyan/slowhttptest/wiki/SlowReadTest">Slow Read Denial of Service attack</a> support.</p>
 
 <p>Check out the video with demonstration of the attack:</p>
 
