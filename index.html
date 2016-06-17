@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Slowhttptest by shekyan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Slowhttptest</h1>
+      <h2 class="project-tagline">Application Layer DoS attack simulator</h2>
+      <a href="https://github.com/shekyan/slowhttptest" class="btn">View on GitHub</a>
+      <a href="https://github.com/shekyan/slowhttptest/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/shekyan/slowhttptest/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="slowhttptest" class="anchor" href="#slowhttptest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>slowhttptest</h1>
+
+<p>Application Layer DoS attacks, such as <strong><a href="http://ha.ckers.org/slowloris/">slowloris</a></strong>, <strong><a href="http://www.darkreading.com/vulnerability-management/167901026/security/attacks-breaches/228000532/index.html">Slow HTTP POST</a></strong>, <strong><a href="https://community.qualys.com/blogs/securitylabs/2012/01/05/slow-read">Slow Read attack</a></strong> (based on TCP persist timer exploit) by draining concurrent connections pool, as well as <strong>[[Apache Range Header attack|ApacheRangeTest]]</strong> by causing very significant memory and CPU usage on the server.</p>
+
+<p>Slowloris and Slow HTTP POST DoS attacks rely on the fact that the HTTP protocol, by design, requires requests to be completely received by the server before they are processed. If an HTTP request is not complete, or if the transfer rate is very low, the server keeps its resources busy waiting for the rest of the data. If the server keeps too many resources busy, this creates a denial of service. This tool is sending partial HTTP requests, trying to get denial of service from target HTTP server.</p>
+
+<p>[[Slow Read DoS attack|SlowReadTest]] aims the same resources as slowloris and slow POST, but instead of prolonging the request, it sends legitimate HTTP request and reads the response slowly.</p>
+
+<p>[[Installation and usage examples|InstallationAndUsage]]</p>
+
+<p><a href="http://blog.shekyan.com/2012/01/how-i-knocked-down-30-servers-from-one-laptop.html">How I knocked down 30 servers using slowhttptest</a></p>
+
+<p><a href="http://blog.shekyan.com/2012/01/are-you-ready-for-slow-reading.html">Slow Read DoS attack explained</a></p>
+
+<p><a href="http://blog.shekyan.com/2011/09/testing-web-servers-for-slow-http-attacks.html">Test results of popular HTTP servers</a></p>
+
+<p><a href="http://blog.shekyan.com/2011/11/how-to-protect-against-slow-http-attacks.html">How to protect against slow HTTP DoS attacks</a></p>
+
+<p>Many thanks to <a href="http://code.google.com/u/tigran_gevorgyan@hotmail.com">Tigran Gevorgyan</a>  and <a href="http://code.google.com/u/107950426759701528367/">Victor Agababov</a> for tons of help and support.
+The logo is from <a href="http://openclipart.org/detail/168031/">http://openclipart.org/detail/168031/</a>.</p>
+
+<p>Some links to the media coverage, for historical purposes:</p>
+
+<p><a href="http://arstechnica.com/business/2012/01/new-slow-motion-dos-attack-just-a-few-pcs-little-fear-of-detection/">ArsTechnica</a>
+<a href="http://www.theverge.com/2012/1/7/2688675/new-denial-of-service-vulnerability-detailed-doesnt-require-many-pcs">The Verge</a>
+<a href="http://news.techworld.com/security/3328184/invisible-dos-attack-devised-by-white-hat-hacker/">TechWorld</a>
+<a href="http://www.darkreading.com/advanced-threats/167901091/security/attacks-breaches/232301367/new-denial-of-service-attack-cripples-web-servers-by-reading-slowly.html">DarkReading</a></p>
+
+<h2>
+<a id="25-november-2013" class="anchor" href="#25-november-2013" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>25 November 2013</h2>
+
+<p>SlowHTTPTest version1.6 is out. Thanks to Comcast for not having Internet for two days, managed to do a lot of things. This release includes all the small bug fixes that were sitting in SVN for over a year, usability improvements and better reporting. Check it out and leave some feedback!
+<a href="http://blog.shekyan.com/2013/11/slowhttptest-v16-is-out.html">Blog post with changes and hints</a></p>
+
+<h2>
+<a id="7-september-2012" class="anchor" href="#7-september-2012" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7 September 2012</h2>
+
+<p>Released version 1.5 with improved CPU utilization, some bug fixes, and proxy support, which means you can direct either probe or entire traffic through a specified web proxy.</p>
+
+<h2>
+<a id="28-january-2012" class="anchor" href="#28-january-2012" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>28 January 2012</h2>
+
+<p>Released version 1.4 with poll() support, which means slowhttptest is not limited to 1024 connections anymore. Added man page, fixed several bugs, including build issues on FreeBSD and cygwin.</p>
+
+<h2>
+<a id="28-december-2011" class="anchor" href="#28-december-2011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>28 December 2011</h2>
+
+<p>Released version 1.3 with [[Slow Read Denial of Service attack|SlowReadTest]] support.</p>
+
+<p>Check out the video with demonstration of the attack:</p>
+
+<p><a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=Jq1nDEuvGjg"><img src="http://img.youtube.com/vi/Jq1nDEuvGjg/0.jpg" width="425" height="344"></a></p>
+
+<h2>
+<a id="26-september-2011" class="anchor" href="#26-september-2011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>26 September 2011</h2>
+
+<p>Released version 1.2. The major new feature is the indicator of HTTP server's availability. Instead of refreshing the page in the browser to figure out if the web server is down, let slowhttptest to request the target web page every second and track the status in log messages and statistics files. <a href="InstallationAndUsage">Installation and usage examples</a> page is updated with detailed description of how probe connection should be configured and used.</p>
+
+<p>Charts now show intervals when server was not available:</p>
+
+<p><img src="https://lh5.googleusercontent.com/-vU4CrGXWOKQ/ToEhHQXKP0I/AAAAAAAAA6g/7GV2rnidAVI/s800/nginx_new.png" alt="![](https://lh5.googleusercontent.com/-vU4CrGXWOKQ/ToEhHQXKP0I/AAAAAAAAA6g/7GV2rnidAVI/s400/nginx_new.png)"></p>
+
+<h2>
+<a id="27-august-2011" class="anchor" href="#27-august-2011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>27 August 2011</h2>
+
+<p>Released version 1.1 that includes test mode for Apache Range header handling DoS vulnerability test</p>
+
+<h2>
+<a id="24-august-2011" class="anchor" href="#24-august-2011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>24 August 2011</h2>
+
+<p>First version of slowhttptest is released.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/shekyan/slowhttptest">Slowhttptest</a> is maintained by <a href="https://github.com/shekyan">shekyan</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
